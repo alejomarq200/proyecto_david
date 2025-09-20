@@ -1,6 +1,7 @@
 <?php
-// parameters
-$dsn = 'mysql:host=localhost;port=3306;dbname=';
+
+// Parametros
+$dsn = 'mysql:host=localhost;port=3306;dbname=sistema_inventario';
 $username = 'root';
 $password = '';
 
@@ -21,4 +22,11 @@ function conectar($options, $dsn, $username, $password)
     return $pdo;
 }
 $pdo  = conectar($options, $dsn, $username, $password);
+
+// Documentamos para evitar mensaje de conexión (USAR SOLO PARA TESIS) 
+// if($pdo) {
+//     echo 'La conexión se realizó correctamente';
+// } else {
+//     echo 'La conexión no se estableció';
+// }
 ?>
