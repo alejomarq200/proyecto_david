@@ -42,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     if ($validar) {
-        echo 'los campos son correctos';
         // Llamar a la función para editar usuario
         $editar = editarUsuarios($pdo, $campos);
         // Solo devuelve verdadero sí hubo cambios
