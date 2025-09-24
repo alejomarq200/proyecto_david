@@ -1,6 +1,7 @@
 <?php
 // 1. Crear función en carpeta respectiva
-function registroDeUsuario($pdo, array $campos){
+function registroDeUsuario($pdo, array $campos)
+{
 
     $statement = $pdo->prepare("INSERT INTO usuarios (cedula, nombre, apellido) VALUES (:cedula_usuario, :nombre_usuario, :apellido_usuario)");
     $statement->bindValue(":cedula_usuario", $campos['cedula_usuario'], PDO::PARAM_STR);
@@ -11,8 +12,26 @@ function registroDeUsuario($pdo, array $campos){
     // 2. Aplicar función con retorno para validar inserción
     return $statement->rowCount() > 0;
 }
+
+// Función para editar información del usuario
+function editarUsuarios($pdo, array $campos)
+{
+    try {
+        $statement = $pdo->prepare("UPDATE usuarios SET nombre = :nombre_usuario, apellido = :apellido_usuario WHERE cedula = :cedula_usuario");
+        $statement->bindValue(":nombre_usuario", $campos['nombre_usuario'], PDO::PARAM_STR);
+        $statement->bindValue(":apellido_usuario", $campos['apellido_usuario'], PDO::PARAM_STR);
+        $statement->bindValue(":cedula_usuario", $campos['cedula_usuario'], PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->rowCount() > 0;
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+}
+
 // Función que evita céduls duplicadas
-function validarCedulaUsuario($pdo, array $campos){
+function validarCedulaUsuario($pdo, array $campos)
+{
 
     try {
         $stmtCedula = $pdo->prepare('SELECT cedula FROM usuarios WHERE cedula = :cedula_usuario');

@@ -67,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (!empty($exito) && $exito == "Se registró con éxito") {
                 header('Location: ../registro.php?ref=exito_cedula');
             }
-
         }
     } else {
         foreach ($errores as $error) {
