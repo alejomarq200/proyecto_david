@@ -84,6 +84,7 @@
       // Incluir archivo de conexión
       require_once("conexion/conexion.php");
       require_once("layout/modalEditarUsuarios.php");
+      require_once("layout/modalEliminarUsuarios.php");
 
       // Crear función para enlistar usuarios (Traer valores)
       function enlistarUsuarios($pdo)
@@ -120,7 +121,11 @@
         data-apellido="' . htmlspecialchars($u['apellido']) . '"
         ><i class="fa-solid fa-pen-to-square"></i> Editar
         </button>
-        <button style="background-color:#dc3545; color:white; border:none; padding:8px 12px; border-radius:6px; font-size:13px; cursor:pointer;">
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarUsuario" 
+        data-cedula="' . htmlspecialchars($u['cedula']) . '"
+        data-nombre="' . htmlspecialchars($u['nombre']) . '"
+        data-apellido="' . htmlspecialchars($u['apellido']) . '"
+        >
         <i class="fas fa-trash-alt"></i> Eliminar
         </button>
         </td>';

@@ -1,5 +1,6 @@
 <?php
 // 1. Crear función en carpeta respectiva
+
 function registroDeUsuario($pdo, array $campos)
 {
 
@@ -44,6 +45,42 @@ function validarCedulaUsuario($pdo, array $campos)
             return $retornado['cedula'];
         }
 
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+}
+
+// Crear función de eliminar usuario
+
+function eliminarUsuario($pdo, $cedula) {
+
+    try {
+        $stmtEliminarUsuario = $pdo->prepare("DELETE FROM usuarios WHERE cedula = :cedula_usuario");
+        $stmtEliminarUsuario->bindValue(":cedula_usuario", $cedula, PDO::PARAM_STR);
+        $stmtEliminarUsuario->execute();
+
+        // Si se elimina retorna true
+        return $stmtEliminarUsuario->rowCount() > 0;
+    } catch (PDOException $e) {
+        $e->getMessage();
+    }
+}
+
+function registrarDetallesUsuario($pdo, array $campos)
+{
+    try{
+
+
+    $statement = $pdo->prepare("INSERT INTO detalles_usuarios (id_usuario, telefono, email, direccion, rol) VALUES (:cedula_usuario, :telefono_usuario, :email_usuario, :direccion_usuario, :rol_usuario)");
+    $statement->bindValue(":cedula_usuario", $campos['cedula_usuario'], PDO::PARAM_STR);
+    $statement->bindValue(":telefono_usuario", $campos['telefono_usuario'], PDO::PARAM_STR);
+    $statement->bindValue(":email_usuario", $campos['email_usuario'], PDO::PARAM_STR);
+    $statement->bindValue(":direccion_usuario", $campos['direccion_usuario'], PDO::PARAM_STR);
+    $statement->bindValue(":rol_usuario", $campos['rol_usuario'], PDO::PARAM_STR);
+    $statement->execute();
+
+    // 2. Aplicar función con retorno para validar inserción
+    return $statement->rowCount() > 0;
     } catch (PDOException $e) {
         echo $e->getMessage();
     }

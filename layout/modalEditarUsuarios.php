@@ -13,7 +13,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="controlador/controlador_EditarUsuarios.php" id="contactForm">
+                <form method="POST" action="controlador/controlador_EditarUsuarios.php" id="formularioEditarUsuario">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Cédula</label>
                         <input type="text" class="form-control" id="cedula" name="cedula" readonly>
@@ -31,7 +31,7 @@
 <script>
     // Inicializar modal y formulario
     const modal = document.getElementById("formModal");
-    const formulario = document.getElementById('contactForm');
+    const formulario = document.getElementById('formularioEditarUsuario');
 
     // Al abrir la modal: setear nombre/id y limpiar inputs
     modal.addEventListener("show.bs.modal", function (event) {

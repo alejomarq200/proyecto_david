@@ -31,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errores[] = 'Error: el nombre tiene menos de 10 caracteres';
     }
 
-
     if (empty($campos['apellido_usuario'])) {
         $validar = false;
         $errores[] = 'Error: el apellido está vacia';
@@ -40,10 +39,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errores[] = 'Error: el apellido tiene menos de 8 caracteres';
     }
 
-
     if ($validar) {
+        // 0. Si campos correctos validar que cedula no esté duplicada
+
+        // 1. Crear función de cédula duplicada
+
+        // 2. Igualar funcióna un variable
+
+        // 3. Devolver mensaje de error si existe cédula, y proceder si no existe
+
+        // 4. Si no existe continuar con edición de datos
+
         // Llamar a la función para editar usuario
         $editar = editarUsuarios($pdo, $campos);
+
         // Solo devuelve verdadero sí hubo cambios
         if ($editar) {
             // Redireccionar cuando la edición es exitosa
