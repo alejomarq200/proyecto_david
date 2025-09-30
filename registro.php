@@ -8,15 +8,17 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="title">Cree su usuario</h1>
+     <?php
+    // include("index.html");
+    ?>
+        <div class="central-container">
         <br />
         <br />
         <!-- Envio a controlador para validación e inserción -->
         <form action="controlador/controlador_CrearUsuarios.php" method="POST" id="form-registro-usuario"
             autocomplete="off">
             <div class="card">
-                <label for="cedula">Permiso:</label>
+                <label for="cedula">Cree su usuario:</label>
                 <input type="text" name="cedula" id="cedula" placeholder="Ingrese su cédula cedula">
                 <span class="error" id="error-cedula"></span>
                 <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre">
@@ -37,7 +39,7 @@
                 <input type="submit" class="btn" id="btn" value="Enviar">
             </div>
         </form>
-    </div>
+        </div>
     <script src="js/registro.js"></script>
 </body>
 

@@ -1,0 +1,196 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Barra de Navegacion Fija Responsiva </title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
+        </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        header {
+            width: 100%;
+            height: 10vh;
+            background: #14CC82;
+            background-size: cover;
+        }
+
+        .content {
+            width: 90%;
+            margin: 4em auto;
+            font-size: 20px;
+            line-height: 30px;
+            text-align: justify;
+        }
+
+        .logo {
+            position: fixed;
+            float: left;
+            margin: 16px 36px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            background: rgba(0, 0, 0, 0);
+            overflow: hidden;
+            color: #fff;
+            padding: 0;
+            text-align: center;
+            margin: 0;
+            transition: 1s;
+        }
+
+        nav.black ul {
+            background: #000;
+        }
+
+        nav ul li {
+            display: inline-block;
+            padding: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .menu-icon {
+            width: 100%;
+            background: #000;
+            text-align: right;
+            box-sizing: border-box;
+            padding: 15px 24px;
+            cursor: pointer;
+            color: #fff;
+            display: none;
+        }
+
+        @media(max-width: 580px) {
+            .logo {
+                position: fixed;
+                top: 0;
+                margin-top: 16px;
+            }
+
+            nav ul {
+                max-height: 0px;
+                background: #000;
+            }
+
+            nav.black ul {
+                background: #000;
+            }
+
+            .showing {
+                max-height: 20em;
+            }
+
+            nav ul li {
+                box-sizing: border-box;
+                width: 100%;
+                padding: 24px 0;
+                text-align: center;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+
+        .central-container {
+            display: flex;
+            justify-content: center;
+            /* Centra horizontal */
+            align-items: center;
+            /* Centra vertical (opcional, si quieres centrado total) */
+            width: 100%;
+            min-height: 60vh;
+            /* Altura mínima para que tenga espacio */
+            background: #f4f4f4;
+            /* Fondo opcional */
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        .central-container .box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="menu-icon">
+                    <i class="fa fa-bars fa-2x"></i>
+                </div>
+                <div class="logo">
+                    logo
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Acerca</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Iniciar</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(".menu-icon").on("click", function () {
+                $("nav ul").toggleClass("showing");
+            });
+        });
+
+        $(window).on("scroll", function () {
+            if ($(window).scrollTop()) {
+                $('nav').addClass('black');
+            }
+            else {
+                $('nav').removeClass('black');
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

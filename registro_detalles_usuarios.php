@@ -124,8 +124,10 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="title">Agregue información adicional del usuario</h1>
+    <?php
+    // include("index.html");
+    ?>
+        <div class="central-container">
         <br />
         <br />
         <!-- Envio a controlador con dato obtenido para validación e inserción -->
@@ -156,7 +158,7 @@
 
                 <small for="usuarios">Selecciona un usuario:</small>
                 <select name="usuarios" id="usuarios">
-                <option value="Seleccionar">Seleccionar</option>
+                    <option value="Seleccionar">Seleccionar</option>
                     <?php
                     // Iggualamos función a variable
                     $resultados = cargarUsuariosEnSelect($pdo);
@@ -164,7 +166,7 @@
                     if (count($resultados) > 0) {
                         // Recorrer los resultados y crear las opciones
                         foreach ($resultados as $fila) {
-                            echo "<option value='" . $fila['cedula'] . "'>" . $fila['cedula'] . ' - ' .$fila['nombre'] . "</option>";
+                            echo "<option value='" . $fila['cedula'] . "'>" . $fila['cedula'] . ' - ' . $fila['nombre'] . "</option>";
                         }
                     } else {
                         echo "<option value=''>No hay opciones disponibles</option>";
@@ -188,6 +190,7 @@
             </div>
         </form>
     </div>
+
     <script>
         //Obtenemos elementos del formulario
         const formulario = document.getElementById('form-registro-detalles');
@@ -247,7 +250,7 @@
                 document.getElementById('error-rol').textContent = '';
             }
 
-            if(usuarios == 'Seleccionar') {
+            if (usuarios == 'Seleccionar') {
                 validar = false;
                 document.getElementById('error-usuarios').textContent = 'Debe seleccionar un usuario';
             } else {
